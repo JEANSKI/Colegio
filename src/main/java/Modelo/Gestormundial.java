@@ -12,7 +12,7 @@ public class Gestormundial {
 
     private ArrayList<Persona> participantes;
 
-        public GestorMundial() {
+        public Gestormundial() {
         this.participantes = new ArrayList<>();
     }
 
