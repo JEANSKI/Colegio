@@ -6,28 +6,29 @@ package Modelo;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-
 /**
  *
  * @author User
  */
 public class GestormundialTest {
     
-@Test
-    public void testInscripcionYGeneracionDeDatosIntegracion() {
+    @Test
+    public void testIntegracionRegistroYPolimorfismo() {
 
         Gestormundial gestor = new Gestormundial();
-        Competidor ciclista = new Competidor("Jean", 18, "Colombia", 1.75, 75.0, 500);
+        Ciclista ciclista = new Ciclista("Mariana Pajon", "Colombia", 1);
+        Entrenador entrenador = new Entrenador("Carlos Mario", "Colombia", 15);
+
+        gestor.registrarParticipante(ciclista);
+        gestor.registrarParticipante(entrenador);
         
 
-        gestor.registrarEquipo("Colombia");
-        gestor.inscribirCompetidorAEquipo("Colombia", ciclista);
+        String cadenaFinal = gestor.obtenerDatosParticipantes();
         
 
-        String resultado = gestor.obtenerDatosTodosLosCompetidores();
-        
-
-        assertTrue(resultado.contains("Jean"));
-        assertTrue(resultado.contains("Colombia"));
+        assertTrue(cadenaFinal.contains("CICLISTA"));
+        assertTrue(cadenaFinal.contains("Mariana Pajon"));
+        assertTrue(cadenaFinal.contains("ENTRENADOR"));
+        assertTrue(cadenaFinal.contains("Carlos Mario"));
     }
 }
