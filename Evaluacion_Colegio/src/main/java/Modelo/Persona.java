@@ -9,8 +9,9 @@ package Modelo;
  * @author User
  */
 public class Persona {
-    
-protected String nombre, direccion, telefono, fechaNacimiento;
+    protected String nombre, direccion, telefono, fechaNacimiento;
+
+    public Persona() {}
 
     public Persona(String nombre, String direccion, String telefono, String fechaNacimiento) {
         this.nombre = nombre;

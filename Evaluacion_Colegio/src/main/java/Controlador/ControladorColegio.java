@@ -7,6 +7,9 @@ import Modelo.*;
 import Vista.VistaColegio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 /**
  *
@@ -32,29 +35,46 @@ public class ControladorColegio implements ActionListener {
                 String nom = vista.txtNombre.getText();
                 String dir = vista.txtDireccion.getText();
                 String tel = vista.txtTelefono.getText();
-                String fecha = vista.txtFecha.getText(); 
+                String fechaTexto = vista.txtFecha.getText(); 
+
+                DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate fechaNac;
+                
+                try {
+                    fechaNac = LocalDate.parse(fechaTexto, formato);
+                    int edad = Period.between(fechaNac, LocalDate.now()).getYears();
+                    
+                    if (fechaNac.isAfter(LocalDate.now()) || edad > 120) {
+                        throw new Exception("Fecha no realista");
+                    }
+                    
+                    System.out.println("Edad calculada para " + nom + ": " + edad + " años.");
+                    
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(vista, "Error: La fecha '" + fechaTexto + "' no es válida.\nUse el formato: DD/MM/AAAA (ej: 15/05/2000)");
+                    return;
+                }
 
                 String tipo = vista.comboTipo.getSelectedItem().toString();
 
                 if (tipo.equalsIgnoreCase("Estudiante")) {
+                    Estudiante est = new Estudiante(); 
 
-                    Estudiante est = new Estudiante();
                     est.setNombre(nom);
                     est.setDireccion(dir);
                     est.setTelefono(tel);
-                    est.setFechaNacimiento(fecha);
+                    est.setFechaNacimiento(fechaTexto);
                     est.setCodigo(vista.txtCodigo.getText());
                     est.setCarrera(vista.txtCarrera.getText());
+
                     modelo.agregarPersona(est);
                 } else {
                     String ced = vista.txtCedula.getText();
                     String are = vista.txtArea.getText();
                     double sal = Double.parseDouble(vista.txtSalarioHora.getText());
                     int hrs = Integer.parseInt(vista.txtHoras.getText());
-                    modelo.agregarPersona(new Profesor(nom, dir, tel, fecha, ced, are, sal, hrs));
+                    modelo.agregarPersona(new Profesor(nom, dir, tel, fechaTexto, ced, are, sal, hrs));
                 }
-                JOptionPane.showMessageDialog(vista, "Persona registrada exitosamente");
-                limpiarCampos();
             }
 
             if (e.getSource() == vista.btnListarEstudiantes) {
@@ -64,24 +84,10 @@ public class ControladorColegio implements ActionListener {
             if (e.getSource() == vista.btnListarProfesores) {
                 vista.txtPantalla.setText(modelo.reporteProfesores());
             }
-            
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(vista, "Error: Revisa los campos numéricos (Salario/Horas)");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(vista, "Error inesperado: " + ex.getMessage());
         }
-    }
-
-    private void limpiarCampos() {
-        vista.txtNombre.setText("");
-        vista.txtDireccion.setText("");
-        vista.txtTelefono.setText("");
-        vista.txtFecha.setText("");
-        vista.txtCodigo.setText("");
-        vista.txtCarrera.setText("");
-        vista.txtCedula.setText("");
-        vista.txtArea.setText("");
-        vista.txtSalarioHora.setText("0");
-        vista.txtHoras.setText("0");
-    }
+     }
 }

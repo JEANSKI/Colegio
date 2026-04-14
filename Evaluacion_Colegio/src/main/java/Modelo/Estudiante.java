@@ -10,12 +10,8 @@ package Modelo;
  */
 
 public class Estudiante extends Persona {
-private String codigo, carrera;
+    private String codigo, carrera;
 
-
-    public Estudiante() {
-        super("", "", "", "");
-    }
 
     public String getCodigo() { return codigo; }
     public void setCodigo(String codigo) { this.codigo = codigo; }
