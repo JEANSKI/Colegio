@@ -13,13 +13,6 @@ public class Persona {
 
     public Persona() {}
 
-    public Persona(String nombre, String direccion, String telefono, String fechaNacimiento) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
     public String getDireccion() { return direccion; }
