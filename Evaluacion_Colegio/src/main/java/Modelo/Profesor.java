@@ -9,7 +9,6 @@ package Modelo;
  * @author User
  */
 public class Profesor extends Persona {
-
     private String cedula, area;
     private double salarioHora;
     private int horasMes;
@@ -23,19 +22,29 @@ public class Profesor extends Persona {
     }
 
     public double calcularPagoMensual() {
-        return (salarioHora * horasMes) * 1.30; // 30% adicional preparación 
+        double base = salarioHora * horasMes;
+        return base * 1.30; // 30% adicional por preparación
     }
 
-    public double calcularPagoMensual(double bonoExtra) {
-        return calcularPagoMensual() + bonoExtra;
+    public double calcularPagoMensual(double bono) {
+        return calcularPagoMensual() + bono;
     }
 
     public double calcularPrestaciones() {
-        return calcularPagoMensual() * 0.19; // 19% prestaciones 
+        return calcularPagoMensual() * 0.19; // 19% prestaciones
     }
 
+    public String getCedula() { return cedula; }
+    public void setCedula(String cedula) { this.cedula = cedula; }
+    public String getArea() { return area; }
+    public void setArea(String area) { this.area = area; }
+    public double getSalarioHora() { return salarioHora; }
+    public void setSalarioHora(double salarioHora) { this.salarioHora = salarioHora; }
+    public int getHorasMes() { return horasMes; }
+    public void setHorasMes(int horasMes) { this.horasMes = horasMes; }
+
     @Override
-    public String toString() {
-        return "PROFESOR -> " + nombre + " | Pago Total: $" + calcularPagoMensual();
+    public String toString() { 
+        return "PROFESOR -> " + nombre + " | Cédula: " + cedula + " | Pago: $" + calcularPagoMensual();
     }
 }

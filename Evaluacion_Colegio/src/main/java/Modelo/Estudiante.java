@@ -12,14 +12,13 @@ package Modelo;
 public class Estudiante extends Persona {
     private String codigo, carrera;
 
-
-    public String getCodigo() { return codigo; }
+        public String getCodigo() { return codigo; }
     public void setCodigo(String codigo) { this.codigo = codigo; }
     public String getCarrera() { return carrera; }
     public void setCarrera(String carrera) { this.carrera = carrera; }
 
     @Override
-    public String toString() {
+    public String toString() { 
         return "ESTUDIANTE -> " + super.toString() + " | Código: " + codigo + " | Carrera: " + carrera;
     }
 }

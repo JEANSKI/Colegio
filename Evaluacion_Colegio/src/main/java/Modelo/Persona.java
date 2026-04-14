@@ -30,7 +30,7 @@ public class Persona {
     public void setFechaNacimiento(String fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
 
     @Override
-    public String toString() {
+    public String toString() { 
         return "Nombre: " + nombre + " | Tel: " + telefono + " | Dir: " + direccion;
     }
 }
