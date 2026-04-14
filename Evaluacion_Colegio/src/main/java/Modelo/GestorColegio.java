@@ -10,7 +10,7 @@ import java.util.Collections;
  * @author User
  */
 public class GestorColegio {
-    private ArrayList<Persona> personas;
+private ArrayList<Persona> personas;
 
     public GestorColegio() {
         personas = new ArrayList<>();

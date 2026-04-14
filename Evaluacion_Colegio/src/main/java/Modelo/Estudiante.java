@@ -8,11 +8,14 @@ package Modelo;
  *
  * @author User
  */
+
 public class Estudiante extends Persona {
+private String codigo, carrera;
 
-    private String codigo;
-    private String carrera;
 
+    public Estudiante() {
+        super("", "", "", "");
+    }
 
     public String getCodigo() { return codigo; }
     public void setCodigo(String codigo) { this.codigo = codigo; }
@@ -21,6 +24,6 @@ public class Estudiante extends Persona {
 
     @Override
     public String toString() {
-        return "Estudiante -> " + super.toString() + " | Codigo: " + codigo + " | Carrera: " + carrera;
+        return "ESTUDIANTE -> " + super.toString() + " | Código: " + codigo + " | Carrera: " + carrera;
     }
 }

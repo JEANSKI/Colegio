@@ -14,19 +14,28 @@ import static org.junit.Assert.*;
 public class ProfesorTest {
     
 @Test
-    public void testCalculosProfesor() {
-
-        Profesor p = new Profesor("111", "Matematicas", 100.0, 10);
-        p.setNombre("Edwin Gallego");
+    public void testCalculoSalarioYPrestaciones() {
+        // Datos de prueba: $10,000 por hora, 100 horas al mes.
+        // Pago Base = 1,000,000.
+        // Pago Final (+30%) = 1,300,000.
+        // Prestaciones (19% de 1,300,000) = 247,000.
         
-        assertEquals("El nombre debe ser el asignado", "Edwin Gallego", p.getNombre());
-        assertEquals(1300.0, p.calcularPagoMensual(), 0.01);
-        assertEquals(247.0, p.calcularPrestaciones(), 0.01);
+        Profesor prof = new Profesor("Pepe", "Calle 1", "123", "1990", "111", "Sistemas", 10000, 100);
+        
+        assertEquals(1300000.0, prof.calcularPagoMensual(), 0.01);
+        assertEquals(247000.0, prof.calcularPrestaciones(), 0.01);
     }
-    
+
     @Test
-    public void testSobrecargaBono() {
-        Profesor p = new Profesor("222", "Fisica", 100.0, 10);
-        assertEquals(1500.0, p.calcularPagoMensual(200.0), 0.01);
+    public void testIntegracionGestor() {
+        GestorColegio gestor = new GestorColegio();
+        Profesor prof = new Profesor("Ana", "Cali", "444", "1985", "222", "Artes", 20000, 50);
+        
+        gestor.agregarPersona(prof);
+        
+        // Validar que el reporte no este vacío y contenga al profesor
+        String reporte = gestor.reporteProfesores();
+        assertTrue(reporte.contains("Ana"));
+        assertTrue(reporte.contains("Artes"));
     }
 }

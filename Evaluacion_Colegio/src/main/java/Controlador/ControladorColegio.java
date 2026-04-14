@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class ControladorColegio implements ActionListener {
-    
+
     private VistaColegio vista;
     private GestorColegio modelo;
 
@@ -21,55 +21,67 @@ public class ControladorColegio implements ActionListener {
         this.vista = vista;
         this.modelo = modelo;
         this.vista.btnRegistrar.addActionListener(this);
-        this.vista.btnListaEstudiantes.addActionListener(this);
-        this.vista.btnListaProfesores.addActionListener(this);
+        this.vista.btnListarEstudiantes.addActionListener(this);
+        this.vista.btnListarProfesores.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
             if (e.getSource() == vista.btnRegistrar) {
-                String tipo = vista.comboTipo.getSelectedItem().toString().toLowerCase();
+                String nom = vista.txtNombre.getText();
+                String dir = vista.txtDireccion.getText();
+                String tel = vista.txtTelefono.getText();
+                String fecha = vista.txtFecha.getText(); 
 
-                if (tipo.contains("estudiante")) {
+                String tipo = vista.comboTipo.getSelectedItem().toString();
+
+                if (tipo.equalsIgnoreCase("Estudiante")) {
+
                     Estudiante est = new Estudiante();
-                    est.setNombre(vista.txtNombre.getText());
-                    est.setDireccion(vista.txtDireccion.getText());
-                    est.setTelefono(vista.txtTelefono.getText());
-                    est.setFechaNacimiento(vista.txtFecha.getText());
+                    est.setNombre(nom);
+                    est.setDireccion(dir);
+                    est.setTelefono(tel);
+                    est.setFechaNacimiento(fecha);
                     est.setCodigo(vista.txtCodigo.getText());
                     est.setCarrera(vista.txtCarrera.getText());
                     modelo.agregarPersona(est);
                 } else {
-                    double salHora = Double.parseDouble(vista.txtSalarioHora.getText());
-                    int horas = Integer.parseInt(vista.txtHoras.getText());
-                    
-                    Profesor prof = new Profesor(vista.txtCedula.getText(), vista.txtArea.getText(), salHora, horas);
-                    prof.setNombre(vista.txtNombre.getText());
-                    prof.setDireccion(vista.txtDireccion.getText());
-                    prof.setTelefono(vista.txtTelefono.getText());
-                    prof.setFechaNacimiento(vista.txtFecha.getText());
-                    modelo.agregarPersona(prof);
+                    String ced = vista.txtCedula.getText();
+                    String are = vista.txtArea.getText();
+                    double sal = Double.parseDouble(vista.txtSalarioHora.getText());
+                    int hrs = Integer.parseInt(vista.txtHoras.getText());
+                    modelo.agregarPersona(new Profesor(nom, dir, tel, fecha, ced, are, sal, hrs));
                 }
-                JOptionPane.showMessageDialog(vista, "Registro guardado exitosamente");
+                JOptionPane.showMessageDialog(vista, "Persona registrada exitosamente");
+                limpiarCampos();
             }
 
-            if (e.getSource() == vista.btnListaEstudiantes) {
+            if (e.getSource() == vista.btnListarEstudiantes) {
                 vista.txtPantalla.setText(modelo.reporteEstudiantes());
             }
 
-            if (e.getSource() == vista.btnListaProfesores) {
+            if (e.getSource() == vista.btnListarProfesores) {
                 vista.txtPantalla.setText(modelo.reporteProfesores());
             }
-
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(vista, "Error: Revisa que los campos de salario y horas sean numeros");
+            
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(vista, "Error: Revisa los campos numéricos (Salario/Horas)");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(vista, "Error inesperado: " + ex.getMessage());
         }
     }
 
-    public void iniciar() {
-        vista.setTitle("Sistema Escolar - Evaluacion");
-        vista.setLocationRelativeTo(null);
-        vista.setVisible(true);
+    private void limpiarCampos() {
+        vista.txtNombre.setText("");
+        vista.txtDireccion.setText("");
+        vista.txtTelefono.setText("");
+        vista.txtFecha.setText("");
+        vista.txtCodigo.setText("");
+        vista.txtCarrera.setText("");
+        vista.txtCedula.setText("");
+        vista.txtArea.setText("");
+        vista.txtSalarioHora.setText("0");
+        vista.txtHoras.setText("0");
     }
 }

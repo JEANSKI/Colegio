@@ -9,39 +9,45 @@ package Modelo;
  * @author User
  */
 public class Profesor extends Persona {
-    
-private String cedula;
-    private String area;
+private String cedula, area;
     private double salarioHora;
     private int horasMes;
 
-    public Profesor(String cedula, String area, double salarioHora, int horasMes) {
-        this.cedula = cedula;
-        this.area = area;
-        this.salarioHora = salarioHora;
-        this.horasMes = horasMes;
-    }
-
-    public double calcularPagoMensual() {
-        double pagoBase = salarioHora * horasMes;
-        return pagoBase + (pagoBase * 0.30); 
-    }
-
-    public double calcularPagoMensual(double bonoExtra) {
-        return calcularPagoMensual() + bonoExtra;
-    }
-
-    public double calcularPrestaciones() {
-        return calcularPagoMensual() * 0.19; 
+    public Profesor(String n, String d, String t, String f, String ced, String are, double sal, int horas) {
+        super(n, d, t, f);
+        this.cedula = ced;
+        this.area = are;
+        this.salarioHora = sal;
+        this.horasMes = horas;
     }
 
     public String getCedula() { return cedula; }
     public void setCedula(String cedula) { this.cedula = cedula; }
+
     public String getArea() { return area; }
     public void setArea(String area) { this.area = area; }
 
+    public double getSalarioHora() { return salarioHora; }
+    public void setSalarioHora(double salarioHora) { this.salarioHora = salarioHora; }
+
+    public int getHorasMes() { return horasMes; }
+    public void setHorasMes(int horasMes) { this.horasMes = horasMes; }
+
+    public double calcularPagoMensual() {
+        double base = salarioHora * horasMes;
+        return base * 1.30; // 30% por preparación
+    }
+
+    public double calcularPrestaciones() {
+        return calcularPagoMensual() * 0.19; // 19% de prestaciones
+    }
+    
+    public double calcularPagoMensual(double bono) {
+        return calcularPagoMensual() + bono;
+    }
+
     @Override
     public String toString() {
-        return "Profesor -> " + getNombre() + " | Area: " + area + " | Salario Total: $" + calcularPagoMensual() + " | Prestaciones: $" + calcularPrestaciones();
+        return "PROFESOR -> " + nombre + " | Área: " + area + " | Pago Total: $" + calcularPagoMensual();
     }
 }
