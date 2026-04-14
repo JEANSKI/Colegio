@@ -30,14 +30,14 @@ public class VistaColegio extends javax.swing.JFrame {
         txtDireccion = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboTipo = new javax.swing.JComboBox<>();
         txtCodigo = new javax.swing.JTextField();
         txtCarrera = new javax.swing.JTextField();
         txtCedula = new javax.swing.JTextField();
         txtArea = new javax.swing.JTextField();
         txtSalarioHora = new javax.swing.JTextField();
         txtHoras = new javax.swing.JTextField();
-        btnResgistrar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
         btnListaEstudiantes = new javax.swing.JButton();
         btnListaProfesores = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -53,7 +53,7 @@ public class VistaColegio extends javax.swing.JFrame {
 
         txtFecha.setText("jTextField1");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor" }));
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Profesor" }));
 
         txtCodigo.setText("jTextField1");
 
@@ -72,7 +72,7 @@ public class VistaColegio extends javax.swing.JFrame {
 
         txtHoras.setText("0");
 
-        btnResgistrar.setText("jButton1");
+        btnRegistrar.setText("jButton1");
 
         btnListaEstudiantes.setText("jButton1");
 
@@ -100,7 +100,7 @@ public class VistaColegio extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -119,7 +119,7 @@ public class VistaColegio extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnResgistrar))))))
+                                        .addComponent(btnRegistrar))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -136,7 +136,7 @@ public class VistaColegio extends javax.swing.JFrame {
                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,7 +145,7 @@ public class VistaColegio extends javax.swing.JFrame {
                     .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSalarioHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnResgistrar))
+                    .addComponent(btnRegistrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListaEstudiantes)
@@ -198,21 +198,21 @@ public class VistaColegio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnListaEstudiantes;
-    private javax.swing.JButton btnListaProfesores;
-    private javax.swing.JButton btnResgistrar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JButton btnListaEstudiantes;
+    public javax.swing.JButton btnListaProfesores;
+    public javax.swing.JButton btnRegistrar;
+    public javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtArea;
-    private javax.swing.JTextField txtCarrera;
-    private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtHoras;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextArea txtPantalla;
-    private javax.swing.JTextField txtSalarioHora;
-    private javax.swing.JTextField txtTelefono;
+    public javax.swing.JTextField txtArea;
+    public javax.swing.JTextField txtCarrera;
+    public javax.swing.JTextField txtCedula;
+    public javax.swing.JTextField txtCodigo;
+    public javax.swing.JTextField txtDireccion;
+    public javax.swing.JTextField txtFecha;
+    public javax.swing.JTextField txtHoras;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextArea txtPantalla;
+    public javax.swing.JTextField txtSalarioHora;
+    public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
